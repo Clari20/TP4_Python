@@ -44,7 +44,7 @@ mostrar_inventario(inv)
 codigo = input("Ingrese el codigo del producto que desea buscar: ")
 
 def buscar_producto(inv, codigo):
-    if codigo in inv:
+    if inv[codigo]:
         descripcion, precio = inv[codigo]
         print(f"Código: {codigo}")
         print(f"Descripción: {descripcion}")
@@ -60,7 +60,7 @@ nuevo_precio = input("Ingrese el nuevo precio que le quiere colocar al producto:
 def modificar_precio(inv, codigo, nuevo_precio):
     
 
-    if codigo in inv:
+    if inv[codigo]:
         descripcion, _ = inv[codigo]  
         inv[codigo] = (descripcion, nuevo_precio) 
         print(f"El precio del producto {codigo} ha sido actualizado a {nuevo_precio}.")
@@ -76,7 +76,7 @@ modificar_precio(inv, codigo, nuevo_precio)
 
 codigo2 =input("Ingrese el codigo del articulo que desea eliminar: ")
 def eliminar_producto(inv, codigo2):
-    del inv[codigo2]
+    elim = inv.pop(codigo2)
     print(inv)
 
 eliminar_producto(inv, codigo2)
@@ -93,8 +93,5 @@ def productos_por_rango_de_precio(inv, min, max):
             print(f"{codigo3}\t{descripcion}\t{precio}")
 
 productos_por_rango_de_precio(inv, min, max)
-
-
-
 
 
